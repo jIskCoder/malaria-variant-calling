@@ -17,7 +17,7 @@ let
 
   ena = pkgs.callPackage ./ena.nix { inherit fetchFastQGZ; };
   samples' = ena.importFromJSON ./PRJEB2140.json;
-  samples = if small then takeAttrs 9 samples' else samples';
+  samples = if small then takeAttrs 3 samples' else samples';
   takeAttrs = n: xs: listToAttrs (zipListsWith nameValuePair (take n (attrNames xs)) (attrValues xs));
 
   QDNAseq = callBionix ./QDNAseq.nix { inherit ref; targets = [ PMIX PMX ]; };
